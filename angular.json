@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "fhir-app-test"
+  "defaultProject": "fhir-app-test",
+  "cli": {
+    "analytics": "540c7634-e30a-41e9-9e9d-0fc23bc71c37"
+  }
 }
