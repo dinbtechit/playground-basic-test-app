@@ -9,7 +9,7 @@
                 Questionnaire
             </mat-card-title>
             <form [formGroup]="formDy" (ngSubmit)="submit()"
-                  *ngIf="questionnaireJsonInvalid else questionnaireLoadingError">
+                  *ngIf="questionnaireJsonValid else questionnaireLoadingError">
                 <mat-card-content class="ml-4 mr-4">
                     <mat-divider></mat-divider>
                     <formly-form [model]="model" [fields]="fieldsDy" [options]="options" [form]="formDy"></formly-form>
@@ -28,7 +28,12 @@
                 Output
             </mat-card-title>
             <mat-tab-group>
-                <mat-tab label="QuestionnaireResponse">
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        <span class="pr-2">Questionnaire Response</span>
+                        <span *ngIf="questionnaireResponseJsonValid" class="badge" style="background-color: green">Valid</span>
+                        <span *ngIf="!questionnaireResponseJsonValid" class="badge" style="background-color: #dc3545">invalid</span>
+                    </ng-template>
                     <pre>{{questionnaireResponse | json}}</pre>
                 </mat-tab>
                 <mat-tab label="form">
@@ -38,6 +43,8 @@
         </mat-card>
     </div>
 </div>
+
+
 
 <ng-template #questionnaireLoadingError>
     <div class="d-flex justify-content-center">
