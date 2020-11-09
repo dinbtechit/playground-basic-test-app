@@ -50,7 +50,7 @@ This project is a skeleton project for querying data from the [HAPI FHIR public 
 
 ![](./readmeScreenshots/Questionnaire-sc1.png)
 
-Complete Questionnaire Response
+**Complete Questionnaire Response:**
 ```json
 {
   "resourceType": "QuestionnaireResponse",
