@@ -50,4 +50,94 @@ This project is a skeleton project for querying data from the [HAPI FHIR public 
 
 ![](./readmeScreenshots/Questionnaire-sc1.png)
 
+Complete Questionnaire Response
+```json
+{
+  "resourceType": "QuestionnaireResponse",
+  "identifier": {
+    "value": "a73b3550-229c-11eb-86dd-3f3f88766ce6"
+  },
+  "questionnaire": "http://hl7.org/fhir/Questionnaire/f201",
+  "status": "completed",
+  "authored": "2020-11-09T15:02:58.085Z",
+  "item": [
+    {
+      "linkId": "1",
+      "text": "Do you have allergies?",
+      "answer": [
+        {
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "linkId": "2",
+      "text": "General questions",
+      "item": [
+        {
+          "linkId": "2.1",
+          "text": "What is your gender?",
+          "answer": [
+            {
+              "valueString": "asfsdaf"
+            }
+          ]
+        },
+        {
+          "linkId": "2.2",
+          "text": "What is your date of birth?",
+          "answer": [
+            {
+              "valueDate": "2020-11-18"
+            }
+          ]
+        },
+        {
+          "linkId": "2.3",
+          "text": "What is your country of birth?",
+          "answer": [
+            {
+              "valueString": "asdfsa"
+            }
+          ]
+        },
+        {
+          "linkId": "2.4",
+          "text": "What is your marital status?",
+          "answer": [
+            {
+              "valueString": "asfasdfa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "3",
+      "text": "Intoxications",
+      "item": [
+        {
+          "linkId": "3.1",
+          "text": "Do you smoke?",
+          "answer": [
+            {
+              "valueBoolean": true
+            }
+          ]
+        },
+        {
+          "linkId": "3.2",
+          "text": "Do you drink alchohol?",
+          "answer": [
+            {
+              "valueBoolean": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 ![](./readmeScreenshots/questionnaire-sc2.png)
