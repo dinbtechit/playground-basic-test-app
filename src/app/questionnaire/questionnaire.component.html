@@ -1,0 +1,60 @@
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid container-fluid-max-width">
+        <mat-card style="min-height: 500px">
+            <div *ngIf="!questionnaireLoading else spinner">
+            <mat-card-title>
+                Questionnaire
+            </mat-card-title>
+            <form [formGroup]="formDy" (ngSubmit)="submit()"
+                  *ngIf="questionnaireJsonInvalid else questionnaireLoadingError">
+                <mat-card-content class="ml-4 mr-4">
+                    <mat-divider></mat-divider>
+                    <formly-form [model]="model" [fields]="fieldsDy" [options]="options" [form]="formDy"></formly-form>
+                    <mat-divider></mat-divider>
+                </mat-card-content>
+                <div class="d-flex justify-content-center  align-items-center">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <button mat-button type="button" (click)="reset()">Reset</button>
+                </div>
+            </form>
+            </div>
+        </mat-card>
+        <br>
+        <mat-card>
+            <mat-card-title>
+                Output
+            </mat-card-title>
+            <mat-tab-group>
+                <mat-tab label="QuestionnaireResponse">
+                    <pre>{{questionnaireResponse | json}}</pre>
+                </mat-tab>
+                <mat-tab label="form">
+                    <pre>{{formDy.value | json}}</pre>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-card>
+    </div>
+</div>
+
+<ng-template #questionnaireLoadingError>
+    <div class="d-flex justify-content-center">
+        <br><br>
+        <div class="alert alert-danger" role="alert">
+            <mat-icon>warning</mat-icon>
+            Oops! Unable to load Questionnaire json. Please rectify and try again.
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #spinner>
+    <mat-grid-list cols="1">
+        <mat-grid-tile>
+            <div class="spinner-border text-primary" role="status">
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</ng-template>
+
