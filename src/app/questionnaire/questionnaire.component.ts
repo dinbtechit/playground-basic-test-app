@@ -38,10 +38,10 @@ export class QuestionnaireComponent implements OnInit {
     constructor(private apiService: ApiService,
                 private formlyUtil: FormlyUtilService,
                 private questionnaireService: QuestionnaireService) {
-        this.getQuestions();
     }
 
     ngOnInit(): void {
+        this.getQuestions();
     }
 
     getQuestions(): void {
