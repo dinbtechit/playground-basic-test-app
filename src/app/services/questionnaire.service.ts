@@ -2,9 +2,10 @@ import {Injectable} from '@angular/core';
 import {
     IQuestionnaire, IQuestionnaire_Item,
     IQuestionnaireResponse, IQuestionnaireResponse_Answer, IQuestionnaireResponse_Item,
-    QuestionnaireResponseStatusKind
+    QuestionnaireResponseStatusKind, RTTI_QuestionnaireResponse
 } from '@ahryman40k/ts-fhir-types/lib/R4';
 import {v1 as uuidv1} from 'uuid';
+import * as E from "fp-ts/Either";
 
 
 @Injectable({
@@ -26,12 +27,19 @@ export class QuestionnaireService {
                 value: uuidv1(),
             },
             questionnaire: questionnaire.url,
-            status: QuestionnaireResponseStatusKind._completed,
+            status: QuestionnaireResponseStatusKind._inProgress,
             authored: new Date().toISOString(),
         };
         let obj: IQuestionnaireResponse_Item[] = [];
         obj = this.mapQrItemsToQrResAnswers(questionnaire, questionnaire.item, obj, answers);
         questionnaireResponse.item = obj;
+        const decodeQuestionnaireRes = RTTI_QuestionnaireResponse.decode(questionnaireResponse);
+        const questionnaireResponseJsonValid = E.isRight(decodeQuestionnaireRes);
+        if (questionnaireResponseJsonValid) {
+            questionnaireResponse.status = QuestionnaireResponseStatusKind._completed;
+        } else {
+            questionnaireResponse.status = QuestionnaireResponseStatusKind._enteredInError;
+        }
         /*console.log(obj);*/
         return questionnaireResponse;
     }
