@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../services/api-service.service';
 import {
-    IQuestionnaireResponse, RTTI_Questionnaire
+    IQuestionnaireResponse, RTTI_Questionnaire, RTTI_QuestionnaireResponse
 } from '@ahryman40k/ts-fhir-types/lib/R4';
 import * as E from 'fp-ts/lib/Either';
 
@@ -30,9 +30,9 @@ export class QuestionnaireComponent implements OnInit {
 
     questionnaireResponse: IQuestionnaireResponse = {resourceType: 'QuestionnaireResponse'};
 
-    questionnaireJsonInvalid = false;
+    questionnaireJsonValid = false;
     questionnaireLoading = true;
-    questionnaireResponseJsonInvalid = false;
+    questionnaireResponseJsonValid = false;
 
     constructor(private apiService: ApiService,
                 private formlyUtil: FormlyUtilService,
@@ -47,7 +47,7 @@ export class QuestionnaireComponent implements OnInit {
         this.apiService.getQuestionnaire().subscribe((questionnaire) => {
             this.questionnaireLoading = true;
             const decodeQuestionnaire = RTTI_Questionnaire.decode(questionnaire);
-            this.questionnaireJsonInvalid = E.isRight(decodeQuestionnaire);
+            this.questionnaireJsonValid = E.isRight(decodeQuestionnaire);
             if (this.questionnaireResponse) {
                 this.model = questionnaire;
                 this.fieldsDy = this.formlyUtil.convertQuestionnaireToFormlySchema(questionnaire);
@@ -59,11 +59,14 @@ export class QuestionnaireComponent implements OnInit {
     submit() {
         this.questionnaireResponse = this.questionnaireService
             .generateQuestionnaireResponse(this.model, this.formDy.value);
+        const decodeQuestionnaireRes = RTTI_QuestionnaireResponse.decode(this.questionnaireResponse);
+        this.questionnaireResponseJsonValid = E.isRight(decodeQuestionnaireRes);
         console.log(JSON.stringify(this.formDy.value));
     }
 
     reset() {
         this.questionnaireResponse = {resourceType: 'QuestionnaireResponse'};
+        this.questionnaireResponseJsonValid = false;
         this.options.resetModel();
     }
 }
