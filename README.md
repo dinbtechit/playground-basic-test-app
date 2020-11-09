@@ -34,17 +34,17 @@ This project is a skeleton project for querying data from the [HAPI FHIR public 
 
 ### Intermediate Tasks:
 
-* [ ] In `QuestionnaireComponent`, generate a form using the `questionnaire.json` file in the `assests` folder. The form should have validation applied to each input.
+* [X] In `QuestionnaireComponent`, generate a form using the `questionnaire.json` file in the `assests` folder. The form should have validation applied to each input.
 
-* [ ] Using the results from the form, generate a [`QuestionnaireResponse`](https://www.hl7.org/fhir/questionnaireresponse.html). The `QuestionnaireResponse` should follow the structure outlined in the [Resource Content Section](https://www.hl7.org/fhir/questionnaireresponse.html#resource)
+* [X] Using the results from the form, generate a [`QuestionnaireResponse`](https://www.hl7.org/fhir/questionnaireresponse.html). The `QuestionnaireResponse` should follow the structure outlined in the [Resource Content Section](https://www.hl7.org/fhir/questionnaireresponse.html#resource)
 
-* [ ] Display your results at the bottom of the page.
+* [X] Display your results at the bottom of the page.
 
-* [ ] Update the `QuestionnaireComponent` to be mobile-friendly.
+* [X] Update the `QuestionnaireComponent` to be mobile-friendly.
 
-* [ ] Please include unit tests for your work.
+* [X] Please include unit tests for your work.
 
-* [ ] Commit your work.
+* [X] Commit your work.
 
 ## Solution
 
