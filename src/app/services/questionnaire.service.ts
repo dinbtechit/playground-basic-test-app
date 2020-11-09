@@ -85,7 +85,7 @@ export class QuestionnaireService {
     }
 
     /**
-     * Converts Questionnaire Items to QuestionnareResponse Answers
+     * Converts Questionnaire Items to QuestionnaireResponse Answers
      *
      */
     mapQrItemsToQrResAnswers(qna: IQuestionnaire,
