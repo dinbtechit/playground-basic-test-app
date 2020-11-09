@@ -1,25 +1,83 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
-
-import { AppComponent } from './app.component';
-import { ApiService } from './services/api-service.service';
-import { AppRoutingModule } from './app-routing.module';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
+import {RouterModule, Routes} from '@angular/router';
+import {AppComponent} from './app.component';
+import {ApiService} from './services/api-service.service';
+import {AppRoutingModule} from './app-routing.module';
+import {QuestionnaireComponent} from './questionnaire/questionnaire.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {FieldArrayType, FormlyModule} from '@ngx-formly/core';
+import {FormlyMaterialModule} from '@ngx-formly/material';
+import {MaterialModule} from './utilModules/material.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatCheckbox} from '@angular/material/checkbox';
+import {MatInput} from '@angular/material/input';
+import {FormlyFieldCheckbox} from '@ngx-formly/material/checkbox';
+import {FormlyFieldInput} from '@ngx-formly/material/input';
+import {FormlyDatepickerTypeComponent} from '@ngx-formly/material/datepicker/datepicker.type';
+import {GroupComponent} from './questionnaire/group/group.component';
+import {ObjectTypeComponent} from './questionnaire/group/object/object.type.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    RouterModule,
-    AppRoutingModule
-  ],
-  providers: [
-    ApiService
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        QuestionnaireComponent,
+        GroupComponent,
+        ObjectTypeComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        RouterModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        FormlyModule.forRoot({
+            extras: {lazyRender: true},
+            types: [
+                {
+                    name: 'boolean',
+                    extends: 'checkbox'
+                },
+                {
+                    name: 'string',
+                    extends: 'input'
+                },
+                {
+                    name: 'date',
+                    extends: 'input',
+                    defaultOptions: {
+                        templateOptions: {
+                            type: 'date'
+                        }
+                    }
+                },
+                {
+                    name: 'dateTime',
+                    extends: 'input',
+                    defaultOptions: {
+                        templateOptions: {
+                            type: 'datetime-local'
+                        }
+                    }
+                },
+                {
+                    name: 'array', component: GroupComponent
+                },
+                {
+                    name: 'object', component: ObjectTypeComponent
+                }
+
+            ]
+        }),
+        FormlyMaterialModule
+    ],
+    providers: [
+        ApiService
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
