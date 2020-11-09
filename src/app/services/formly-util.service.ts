@@ -16,6 +16,11 @@ export class FormlyUtilService {
 
     public convertQuestionnaireToFormlySchema(qna: IQuestionnaire)
         : FormlyFieldConfig[] {
+
+        if (!qna.item) {
+            return [];
+        }
+
         let fields = {};
         fields = this.qrItemsToFormly(qna, qna.item, fields);
         const schema: object = {
