@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component, OnInit} from '@angular/core';
 import {ApiService} from '../services/api-service.service';
 import {
     IQuestionnaireResponse, RTTI_Questionnaire, RTTI_QuestionnaireResponse
@@ -9,6 +9,7 @@ import {FormGroup} from '@angular/forms';
 import {FormlyFieldConfig, FormlyFormOptions} from '@ngx-formly/core';
 import {FormlyUtilService} from '../services/formly-util.service';
 import {QuestionnaireService} from '../services/questionnaire.service';
+import {delay} from 'rxjs/operators';
 
 
 @Component({
@@ -61,7 +62,6 @@ export class QuestionnaireComponent implements OnInit {
             .generateQuestionnaireResponse(this.model, this.formDy.value);
         const decodeQuestionnaireRes = RTTI_QuestionnaireResponse.decode(this.questionnaireResponse);
         this.questionnaireResponseJsonValid = E.isRight(decodeQuestionnaireRes);
-        console.log(JSON.stringify(this.formDy.value));
     }
 
     reset() {

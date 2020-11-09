@@ -32,7 +32,7 @@ export class QuestionnaireService {
         let obj: IQuestionnaireResponse_Item[] = [];
         obj = this.mapQrItemsToQrResAnswers(questionnaire, questionnaire.item, obj, answers);
         questionnaireResponse.item = obj;
-        console.log(obj);
+        /*console.log(obj);*/
         return questionnaireResponse;
     }
 

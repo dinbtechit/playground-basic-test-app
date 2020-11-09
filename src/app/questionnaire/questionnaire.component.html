@@ -5,21 +5,22 @@
     <div class="container-fluid container-fluid-max-width">
         <mat-card style="min-height: 500px">
             <div *ngIf="!questionnaireLoading else spinner">
-            <mat-card-title>
-                Questionnaire
-            </mat-card-title>
-            <form [formGroup]="formDy" (ngSubmit)="submit()"
-                  *ngIf="questionnaireJsonValid else questionnaireLoadingError">
-                <mat-card-content class="ml-4 mr-4">
-                    <mat-divider></mat-divider>
-                    <formly-form [model]="model" [fields]="fieldsDy" [options]="options" [form]="formDy"></formly-form>
-                    <mat-divider></mat-divider>
-                </mat-card-content>
-                <div class="d-flex justify-content-center  align-items-center">
-                    <button class="btn btn-primary" type="submit">Submit</button>
-                    <button mat-button type="button" (click)="reset()">Reset</button>
-                </div>
-            </form>
+                <mat-card-title>
+                    Questionnaire
+                </mat-card-title>
+                <form [formGroup]="formDy" (ngSubmit)="submit()"
+                      *ngIf="questionnaireJsonValid else questionnaireLoadingError">
+                    <mat-card-content class="ml-4 mr-4">
+                        <mat-divider></mat-divider>
+                        <formly-form [model]="model" [fields]="fieldsDy" [options]="options"
+                                     [form]="formDy"></formly-form>
+                        <mat-divider></mat-divider>
+                    </mat-card-content>
+                    <div class="d-flex justify-content-center  align-items-center">
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                        <button mat-button type="button" (click)="reset()">Reset</button>
+                    </div>
+                </form>
             </div>
         </mat-card>
         <br>
@@ -31,19 +32,19 @@
                 <mat-tab>
                     <ng-template mat-tab-label>
                         <span class="pr-2">Questionnaire Response</span>
-                        <span *ngIf="questionnaireResponseJsonValid" class="badge" style="background-color: green">Valid</span>
+                        <span *ngIf="questionnaireResponseJsonValid" class="badge"
+                              style="background-color: green">Valid</span>
                         <span *ngIf="!questionnaireResponseJsonValid" class="badge" style="background-color: #dc3545">invalid</span>
                     </ng-template>
                     <pre>{{questionnaireResponse | json}}</pre>
                 </mat-tab>
-                <mat-tab label="form">
+                <!--<mat-tab label="form">
                     <pre>{{formDy.value | json}}</pre>
-                </mat-tab>
+                </mat-tab>-->
             </mat-tab-group>
         </mat-card>
     </div>
 </div>
-
 
 
 <ng-template #questionnaireLoadingError>
