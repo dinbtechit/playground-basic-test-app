@@ -45,3 +45,9 @@ This project is a skeleton project for querying data from the [HAPI FHIR public 
 * [ ] Please include unit tests for your work.
 
 * [ ] Commit your work.
+
+## Solution
+
+![](./readmeScreenshots/Questionnaire-sc1.png)
+
+![](./readmeScreenshots/questionnaire-sc2.png)
