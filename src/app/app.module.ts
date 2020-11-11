@@ -32,7 +32,7 @@ import {ObjectTypeComponent} from './questionnaire/group/object/object.type.comp
         FormlyModule.forRoot({
             extras: {lazyRender: true},
             validationMessages: [
-                {name: 'pattern', message: 'field cannot contain white space'}
+                {name: 'required', message: 'required'}
             ],
             types: [
                 {
@@ -45,7 +45,6 @@ import {ObjectTypeComponent} from './questionnaire/group/object/object.type.comp
                     defaultOptions: {
                         templateOptions: {
                             maxLength: 1024,
-                            pattern: '[\\r\\n\\t\\S]+'
                         }
                     }
                 },
