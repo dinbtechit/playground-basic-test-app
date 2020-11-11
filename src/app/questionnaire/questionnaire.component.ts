@@ -58,15 +58,23 @@ export class QuestionnaireComponent implements OnInit {
     }
 
     submit() {
-        this.questionnaireResponse = this.questionnaireService
-            .generateQuestionnaireResponse(this.model, this.formDy.value);
-        this.questionnaireResponseJsonValid =
-            this.questionnaireResponse.status === QuestionnaireResponseStatusKind._completed ? true : false;
+        if (this.formDy.valid) {
+            this.questionnaireResponse = this.questionnaireService
+                .generateQuestionnaireResponse(this.model, this.formDy.value);
+            this.questionnaireResponseJsonValid =
+                this.questionnaireResponse.status === QuestionnaireResponseStatusKind._completed ? true : false;
+        } else {
+            this.resetQuestionnaireResponse();
+        }
+    }
+
+    resetQuestionnaireResponse() {
+        this.questionnaireResponse = {resourceType: 'QuestionnaireResponse'};
+        this.questionnaireResponseJsonValid = false;
     }
 
     reset() {
-        this.questionnaireResponse = {resourceType: 'QuestionnaireResponse'};
-        this.questionnaireResponseJsonValid = false;
+        this.resetQuestionnaireResponse();
         this.options.resetModel();
     }
 }
