@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
-import {RouterModule, Routes} from '@angular/router';
+import {RouterModule} from '@angular/router';
 import {AppComponent} from './app.component';
 import {ApiService} from './services/api-service.service';
 import {AppRoutingModule} from './app-routing.module';
@@ -11,11 +11,6 @@ import {FieldArrayType, FormlyModule} from '@ngx-formly/core';
 import {FormlyMaterialModule} from '@ngx-formly/material';
 import {MaterialModule} from './utilModules/material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatCheckbox} from '@angular/material/checkbox';
-import {MatInput} from '@angular/material/input';
-import {FormlyFieldCheckbox} from '@ngx-formly/material/checkbox';
-import {FormlyFieldInput} from '@ngx-formly/material/input';
-import {FormlyDatepickerTypeComponent} from '@ngx-formly/material/datepicker/datepicker.type';
 import {GroupComponent} from './questionnaire/group/group.component';
 import {ObjectTypeComponent} from './questionnaire/group/object/object.type.component';
 
@@ -36,6 +31,9 @@ import {ObjectTypeComponent} from './questionnaire/group/object/object.type.comp
         MaterialModule,
         FormlyModule.forRoot({
             extras: {lazyRender: true},
+            validationMessages: [
+                {name: 'pattern', message: 'field cannot contain white space'}
+            ],
             types: [
                 {
                     name: 'boolean',
@@ -43,7 +41,13 @@ import {ObjectTypeComponent} from './questionnaire/group/object/object.type.comp
                 },
                 {
                     name: 'string',
-                    extends: 'input'
+                    extends: 'input',
+                    defaultOptions: {
+                        templateOptions: {
+                            maxLength: 1024,
+                            pattern: '[\\r\\n\\t\\S]+'
+                        }
+                    }
                 },
                 {
                     name: 'date',
