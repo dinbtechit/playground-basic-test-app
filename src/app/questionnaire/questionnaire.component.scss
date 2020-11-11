@@ -1,3 +1,7 @@
 .container-fluid-max-width {
   max-width: 700px;
 }
+
+::ng-deep .mat-form-field-invalid {
+  color: #dc3545;
+}

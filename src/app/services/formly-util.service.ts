@@ -87,6 +87,13 @@ export class FormlyUtilService {
                 obj[field.linkId] = {
                     title: field.text,
                     type: field.type,
+                    widget: {
+                        formlyConfig: {
+                            templateOptions: {
+                                required: true,
+                            },
+                        }
+                    },
                 };
             } else {
                 obj[field.linkId] = {
