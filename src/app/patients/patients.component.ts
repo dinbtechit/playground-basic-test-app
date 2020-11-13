@@ -58,6 +58,7 @@ export class PatientsComponent implements OnInit, AfterViewInit {
     lastUpdatedDate: Date;
 
     ngOnInit(): void {
+        this.searchLoading = true;
         this.apiService.getPatientsBetween1960To1965().pipe(
             map((it) => it.entry as IBundle_Entry[]),
         ).subscribe(
@@ -68,6 +69,7 @@ export class PatientsComponent implements OnInit, AfterViewInit {
                     const columnsHeader = Object.keys(patients).filter((key) => !this.notAllowedKeys.includes(key));
                     this.displayedColumns = columnsHeader;
                     this.lastUpdatedDate = new Date();
+                    this.searchLoading = false;
                     // console.log(data);
                     // console.log(Object.keys(patient).filter((key) => !this.notAllowedKeys.includes(key)));
                 } else {

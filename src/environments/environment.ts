@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  queryURI: 'http://hapi.fhir.org/baseR4'
+  queryURI: 'https://hapi.fhir.org/baseR4'
 };
 
 /*

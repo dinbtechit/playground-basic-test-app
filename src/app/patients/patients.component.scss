@@ -12,3 +12,62 @@ footer {
   font-size: 0.975em !important;
   background-color: #212121;
 }
+
+@media screen and (max-width: 960px) {
+  .mat-table {
+    border: 0;
+    vertical-align: middle
+  }
+
+  .mat-table caption {
+    font-size: 1em;
+  }
+
+  /*  Enable this to hide header */
+  .mat-table .mat-header-cell {
+
+    /*border: 10px solid;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    position: absolute;
+    width: 1px;*/
+    font-size: 10px;
+  }
+
+  .mat-table .mat-row {
+    border-bottom: 5px solid #424141;
+    display: block;
+  }
+  /*  .mat-table .mat-row:nth-child(even) {background: #eee}
+    .mat-table .mat-row:nth-child(odd) {background: #fff}*/
+  .mat-table .mat-cell {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 1em;
+    /*text-align: center;*/
+    font-weight: bold;
+    height: auto;
+    margin-bottom: 4%;
+  }
+  .mat-table .mat-cell:before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label) ':';
+    float: left;
+    text-transform: capitalize;
+    margin-left: 20px;
+    font-weight: bolder;
+    font-size: .85em;
+  }
+
+  .mat-table .mat-cell:last-child {
+    border-bottom: 0;
+  }
+  .mat-table .mat-cell:first-child {
+    margin-top: 4%;
+  }
+}

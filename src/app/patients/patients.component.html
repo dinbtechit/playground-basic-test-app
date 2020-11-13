@@ -1,102 +1,98 @@
 <div class="d-flex flex-column min-vh-100">
-<div class="flex-grow-1 container mt-4 pb-5">
-    <h1 class="text-white">Patient List</h1>
-    <div class="card text-white bg-secondary mb-3">
-        <div class="card-header" data-toggle="collapse" data-target="#demo"><mat-icon style="font-size: medium">info</mat-icon>Click to README...</div>
-        <div class="card-body"  id="demo" class="collapse">
-            <h5 class="card-title"></h5>
-            <div class="card-text" >
-                <ol>
-                    <li>Displaying Patients between 1960 and 1965 within a dynamic table with headers hardcoded.</li>
-                    <li>Table sorted by youngest birthdate to oldest</li>
-                    <li>Time the request. Output the time on the footer of the page.</li>
-                    <li>Added a search functionality to the page using the following query
-                        <code class="text-white bg-darker">
-                          <br>&_filter=family eq "name" or given eq "name" and birthdate gt "birthDate"
-                          <br>&birthdate=ge1960&birthdate=le1965
-                        </code>
-                    </li>
-                    <li>Apply validation to the inputs. (Name - Alphabetic characters only |  Date - YYYY/MM/DD)</li>
-                    <li>Added Timeouts on search button to prevent multi clicks</li>
-                </ol>
+    <div class="flex-grow-1 container mt-4 pb-5">
+        <h1 class="text-white">Patient List</h1>
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-header" data-toggle="collapse" data-target="#demo">
+                <mat-icon style="font-size: medium">info</mat-icon>
+                Click to README...
+            </div>
+            <div class="card-body" id="demo" class="collapse">
+                <h5 class="card-title"></h5>
+                <div class="card-text">
+                    <ol>
+                        <li>Displaying Patients between 1960 and 1965 within a dynamic table with headers hardcoded.
+                        </li>
+                        <li>Table sorted by youngest birthdate to oldest</li>
+                        <li>Time the request. Output the time on the footer of the page.</li>
+                        <li>Added a search functionality to the page using the following query
+                            <code class="text-white bg-darker">
+                                <br>&_filter=family eq "name" or given eq "name" and birthdate gt "birthDate"
+                                <br>&birthdate=ge1960&birthdate=le1965
+                            </code>
+                        </li>
+                        <li>Apply validation to the inputs. (Name - Alphabetic characters only | Date - YYYY/MM/DD)</li>
+                        <li>Added Timeouts on search button to prevent multi clicks</li>
+                    </ol>
+                </div>
             </div>
         </div>
-    </div>
-    <mat-card class="mat-elevation-z18">
-        <mat-card-subtitle class="font-weight-bold">Search</mat-card-subtitle>
-        <form [formGroup]="searchForm" (ngSubmit)="submit()">
-            <div class="row d-flex justify-content-evenly">
-                <div class="col-lg-5 col-md-12 col-sm-12">
-                    <mat-form-field class="w-100" appearance="fill">
-                        <mat-label>Search by First or Last Name</mat-label>
-                        <input matInput name="nameSearch" formControlName="nameSearch">
-                        <mat-error *ngIf="!searchForm.valid">
-                            Non Alphabet Characters are not allowed
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="col-lg-5 col-md-12 col-sm-12">
-                    <mat-form-field appearance="fill" class="w-100">
-                        <mat-label>Search by birth date</mat-label>
-                        <input matInput [matDatepicker]="picker" mate placeholder="YYYY/MM/DD"
-                               formControlName="birthDateSearch">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                        <mat-error *ngIf="!searchForm.valid">
-                            Enter a valid date <strong>YYYY/MM/DD</strong>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="col-lg-1 col-md-12 col-sm-12 h-25 mt-2">
-                    <button mat-button class="btn btn-primary btn-block" type="submit" [disabled]="searchLoading">
-                        <ng-container *ngIf="!searchLoading">
-                            <mat-icon>search</mat-icon>
-                        </ng-container>
-                        <ng-container *ngIf="searchLoading">
-                            <div class="spinner-border spinner-border-sm" role="status">
-                                <span class="sr-only"></span>
-                            </div>
-                        </ng-container>
-                        <span class="sr-only d-lg-none d-md-inline d-sm-inline">Search</span>
-                    </button>
-                </div>
-            </div>
-        </form>
-    </mat-card>
-    <br>
-    <mat-card class="mat-elevation-z18">
-        <!--<input matInput (keyup)="onSearchInput($event)" placeholder="search for anything...">-->
-        <table mat-table [dataSource]="dataSource" matSort matSortDisabled>
-            <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
-                <th mat-header-cell class="font-weight-bolder" *matHeaderCellDef
-                    mat-sort-header> {{ column | titlecase }}
-                    <div class="d-flex justify-content-end" *ngIf="searchLoading">
-                        <div class="ml-2 spinner-border spinner-border-sm text-primary" role="status">
-                            <span class="sr-only"></span>
-                        </div>
+        <mat-card class="mat-elevation-z18" >
+            <mat-card-subtitle class="font-weight-bold">Search</mat-card-subtitle>
+            <form [formGroup]="searchForm" (ngSubmit)="submit()">
+                <div class="row d-flex justify-content-evenly">
+                    <div class="col-lg-5 col-md-12 col-sm-12">
+                        <mat-form-field class="w-100" appearance="fill">
+                            <mat-label>Search by First or Last Name</mat-label>
+                            <input matInput name="nameSearch" formControlName="nameSearch">
+                            <mat-error *ngIf="!searchForm.valid">
+                                Non Alphabet Characters are not allowed
+                            </mat-error>
+                        </mat-form-field>
                     </div>
-                </th>
+                    <div class="col-lg-5 col-md-12 col-sm-12">
+                        <mat-form-field appearance="fill" class="w-100">
+                            <mat-label>Search by birth date</mat-label>
+                            <input matInput [matDatepicker]="picker" mate placeholder="YYYY/MM/DD"
+                                   formControlName="birthDateSearch">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="!searchForm.valid">
+                                Enter a valid date <strong>YYYY/MM/DD</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-1 col-md-12 col-sm-12 h-25 mt-2">
+                        <button mat-button class="btn btn-primary btn-block" type="submit" [disabled]="searchLoading">
+                            <ng-container *ngIf="!searchLoading">
+                                <mat-icon>search</mat-icon>
+                            </ng-container>
+                            <ng-container *ngIf="searchLoading">
+                                <div class="spinner-border spinner-border-sm" role="status">
+                                    <span class="sr-only"></span>
+                                </div>
+                            </ng-container>
+                            <span class="sr-only d-lg-none d-md-inline d-sm-inline">Search</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </mat-card>
+        <br>
+        <div class="example-container mat-elevation-z18" style="background-color: transparent">
+            <mat-progress-bar *ngIf="searchLoading" mode="indeterminate"></mat-progress-bar>
+            <mat-table [dataSource]="dataSource" matSort matSortDisabled>
+                <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+                    <mat-header-cell class="font-weight-bolder" *matHeaderCellDef mat-sort-header>
+                        {{ column | titlecase }}
+                    </mat-header-cell>
+                    <!--  <td mat-cell *matCellDef="let element"> {{element.resource | patientDetails:column}} </td>-->
+                    <mat-cell *matCellDef="let element" [attr.data-label]="column">
+                        <code><pre>{{element.resource[column] | json }}</pre></code>
+                    </mat-cell>
+                </ng-container>
 
-                <!--  <td mat-cell *matCellDef="let element"> {{element.resource | patientDetails:column}} </td>-->
-                <td mat-cell *matCellDef="let element">
-                    <code>
-                        <pre>{{element.resource[column] | json}}</pre>
-                    </code>
-                </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-        <div>
-            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
-            </mat-paginator>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            <div>
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+                </mat-paginator>
+            </div>
         </div>
-    </mat-card>
-</div>
-<footer class="d-flex justify-content-center navbar mat-elevation-z6 bg-dark">
-    <div class="text-white">
-        Last Updated | {{ lastUpdatedDate |  date: 'yyyy-MM-dd hh:mm a' }}
     </div>
-</footer>
+    <footer class="d-flex justify-content-center navbar mat-elevation-z6 bg-dark">
+        <div class="text-white">
+            Last Updated | {{ lastUpdatedDate |  date: 'yyyy-MM-dd hh:mm a' }}
+        </div>
+    </footer>
 </div>
