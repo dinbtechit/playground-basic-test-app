@@ -6,20 +6,27 @@ import {AppComponent} from './app.component';
 import {ApiService} from './services/api-service.service';
 import {AppRoutingModule} from './app-routing.module';
 import {QuestionnaireComponent} from './questionnaire/questionnaire.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FieldArrayType, FormlyModule} from '@ngx-formly/core';
 import {FormlyMaterialModule} from '@ngx-formly/material';
 import {MaterialModule} from './utilModules/material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {GroupComponent} from './questionnaire/group/group.component';
 import {ObjectTypeComponent} from './questionnaire/group/object/object.type.component';
+import {PatientsComponent} from './patients/patients.component';
+import { PatientDetailsPipe } from './pipes/patient-details.pipe';
+import {NgxJsonViewerModule} from 'ngx-json-viewer';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         QuestionnaireComponent,
         GroupComponent,
-        ObjectTypeComponent
+        ObjectTypeComponent,
+        PatientsComponent,
+        PatientDetailsPipe,
+        MenuComponent,
     ],
     imports: [
         BrowserModule,
@@ -29,6 +36,7 @@ import {ObjectTypeComponent} from './questionnaire/group/object/object.type.comp
         ReactiveFormsModule,
         BrowserAnimationsModule,
         MaterialModule,
+        NgxJsonViewerModule,
         FormlyModule.forRoot({
             extras: {lazyRender: true},
             validationMessages: [
@@ -75,7 +83,8 @@ import {ObjectTypeComponent} from './questionnaire/group/object/object.type.comp
 
             ]
         }),
-        FormlyMaterialModule
+        FormlyMaterialModule,
+        FormsModule
     ],
     providers: [
         ApiService

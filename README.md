@@ -4,33 +4,38 @@ This project is a skeleton project for querying data from the [HAPI FHIR public 
 
 ### Getting Started:
 
-* [ ] Take a few minutes to familiarize yourself with the [FHIR Standard](http://hl7.org/fhir/) for health data exchange. In particular you might want to read the [Executive Summary](http://hl7.org/fhir/summary.html) and the [Developer Introduction](http://hl7.org/fhir/overview-dev.html)
+* [x] Take a few minutes to familiarize yourself with the [FHIR Standard](http://hl7.org/fhir/) for health data exchange. In particular you might want to read the [Executive Summary](http://hl7.org/fhir/summary.html) and the [Developer Introduction](http://hl7.org/fhir/overview-dev.html)
 
-* [ ] In addition, take a few minutes to familiarize yourself with [Angular](https://angular.io/docs). Understand the basics of component structures, HTTP calls, and other basics covered in the [Fundamentals](https://angular.io/guide/architecture) section.
+* [X] In addition, take a few minutes to familiarize yourself with [Angular](https://angular.io/docs). Understand the basics of component structures, HTTP calls, and other basics covered in the [Fundamentals](https://angular.io/guide/architecture) section.
   
-* [ ] Create your own GitHub project and copy the contents of this repository into your own project (please don't fork this repository)
+* [x] Create your own GitHub project and copy the contents of this repository into your own project (please don't fork this repository)
 
-* [ ] Locate the component `AppComponent` and run it. You should see results pop up in the console of your web browser
+* [x] Locate the component `AppComponent` and run it. You should see results pop up in the console of your web browser
 
-* [ ] **Please, do not fork this repo.** Create your own private GitHub repository to do your work in.
+* [x] **Please, do not fork this repo.** Create your own private GitHub repository to do your work in.
 
 ### Basic Tasks:
 
-* [ ] Add a table to AppComponent and populate it with results from the `getPatients()` function.
+* [x] Add a table to AppComponent and populate it with results from the `getPatients()` function.
 
-* [ ] Modify the `ApiService` class to include another call that fetches all `Patient` resources whose `birthdate` are between 1960 and 1965 (inclusive).
+* [x] Modify the `ApiService` class to include another call that fetches all `Patient` resources whose `birthdate` are between 1960 and 1965 (inclusive).
 
-* [ ] Sort the table based on youngest birthdate to oldest.
+* [x] Sort the table based on youngest birthdate to oldest.
 
-* [ ] Time the request. Output the time on the footer of the page. Use a pipe for formatting the output.
+* [x] Time the request. Output the time on the footer of the page. Use a pipe for formatting the output.
 
-* [ ] Add a search function to the page. Add two inputs to `AppComponent` - a textbox that takes in a name (first or last), and a datepicker.  Modify the `ApiService` to include a call that searches for a `Patient` based on the name passed in, and the date of birth passed in from the date picker. The results should be reflected in the table. Use the [SearchParameters section](https://www.hl7.org/fhir/patient.html#search) to help with building your query.
+* [x] Add a search function to the page. Add two inputs to `AppComponent` - a textbox that takes in a name (first or last), and a datepicker.  Modify the `ApiService` to include a call that searches for a `Patient` based on the name passed in, and the date of birth passed in from the date picker. The results should be reflected in the table. Use the [SearchParameters section](https://www.hl7.org/fhir/patient.html#search) to help with building your query.
 
-* [ ] Apply validation to the inputs - the name box cannot contain non-alphabetic characters, and the date field must be a valid date structure (YYYY/MM/DD). 
+* [x] Apply validation to the inputs - the name box cannot contain non-alphabetic characters, and the date field must be a valid date structure (YYYY/MM/DD).
 
-* [ ] Prevent the button search button from multi-clicks wihout using timeouts.
+* [x] Prevent the button search button from multi-clicks wihout using timeouts.
 
-* [ ] Commit your work.
+* [x] Commit your work.
+
+## Solution
+checkout the working app -> [`https://dynamic-questionnaire-fhir.web.app/pa`](https://dynamic-questionnaire-fhir.web.app/pa)
+
+![](./readmeScreenshots/basicTask.gif)
 
 ### Intermediate Tasks:
 

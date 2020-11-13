@@ -10,17 +10,10 @@ import {ApiService} from '../app/services/api-service.service';
 export class AppComponent implements OnInit {
     title = 'fhir-app-test';
 
-    constructor(
-        private apiService: ApiService
-    ) {
+    constructor() {
     }
 
     ngOnInit() {
-        this.apiService.getPatients().subscribe(
-            data => {
-                console.log(data);
-            }
-        );
     }
 }
 
