@@ -35,7 +35,7 @@ export class ApiService {
      * Example http://hapi.fhir.org/baseR4/Patient?
      * birthdate=ge1960&birthdate=le1965
      * @param searchBy family, given and birthdate
-     *                 &_filter=family eq "aaron" or given eq "aaron" and birthdate gt "1960-01-01"
+     *                 &_filter=family eq "aaron" or given eq "aaron" and birthdate eq "1960-01-01"
      */
     searchPatients(searchBy: SearchParameters) {
         const urlPath = '/Patient';
@@ -56,7 +56,7 @@ export class ApiService {
     /**
      * Example URL - http://hapi.fhir.org/baseR4/Patient?birthdate=1965-12-10
      * @param searchBy family, given and birthdate
-     *                 &_filter=family eq "aaron" or given eq "aaron" and birthdate gt "1960-01-01"
+     *                 &_filter=family eq "aaron" or given eq "aaron" and birthdate eq "1960-01-01"
      */
     getSearchParams(searchBy: SearchParameters): HttpParams {
         let params = this.getParams();
